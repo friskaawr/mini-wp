@@ -2,8 +2,8 @@ const Article = require('../models/article')
 
 class articleController{
     static createArticle(req, res, next){
-        const {title, content} = req.body
-        const newArticle = {title, content, UserId : req.decoded.id}
+        const {title, content, link} = req.body
+        const newArticle = {title, content, link,  UserId : req.decoded.id}
         // console.log(req.decoded.id, "ini idnyaaaaaaaaaaa");
         
         Article.create(newArticle)

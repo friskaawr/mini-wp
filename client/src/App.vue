@@ -49,6 +49,9 @@
       <div v-if="optionForm == 'formEdit'">
         <form-profile></form-profile>
       </div>
+      <div>
+          <footerz class="footer-page"></footerz>
+      </div>
     </div>
   </div>
 </template>
@@ -62,6 +65,7 @@ import card from "./components/cardArticle";
 // import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import formProfile from "./components/formProfile";
 import profile from "./components/userProfile";
+import footerz from "./components/footer"
 import axios from "axios";
 let axioss = axios.create({
   baseURL: "http://localhost:3000"
@@ -76,7 +80,8 @@ export default {
     navbar,
     card,
     formProfile,
-    profile
+    profile,
+    footerz
   },
   data() {
     return {
@@ -237,12 +242,12 @@ export default {
       })
         .then(({ data }) => {
           console.log(data);
-          this.link = ""
           this.article = {
-            title: "",
+              title: "",
             content: "",
             link: ""
           }
+          this.link = ""
           this.optionForm = "homepage";
           this.getAllArticle();
         })
@@ -307,7 +312,15 @@ export default {
   height: 35px;
 }
 .sidebar{
-    background-color: #D95D39;
+    background-color: #F18805;
     height: 100; 
+}
+.footer-page{
+    bottom: 0;
+    height : 150px;
+    width: 100%;
+    padding : 6%;
+    color : #fff;
+    background-color: #D95D39;
 }
 </style>

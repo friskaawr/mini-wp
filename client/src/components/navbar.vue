@@ -1,7 +1,7 @@
 <template>
     <div>
   <b-navbar toggleable="lg" type="dark" variant="info">
-    <b-navbar-brand href="#">Mini-Wp</b-navbar-brand>
+    <b-navbar-brand class="brand-name" href="#">Mini-Wp</b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -68,5 +68,9 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
 
+.brand-name{
+  font-family: 'Pacifico', cursive;
+}
 </style>

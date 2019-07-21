@@ -9,6 +9,9 @@
         <small>{{article.createdAt.substring(0, 10)}} </small>
         <small>Author : <a href="#">{{article.UserId.firstname}} {{article.UserId.lastname}}</a></small>
         <!-- <b-card-text>{{article.content}}</b-card-text> -->
+        <br><br>
+        <img v-if="article.link" :src="article.link" alt="featured-image" style="display:block; width:500px; height:280px; margin-right:20%; margin-left:20%;">
+        <br>
         <b-card-text class="text-truncate" v-html="article.content">{{article.content}}</b-card-text>
         <b-button href="#" variant="primary">See Detail</b-button>
       </b-card>
@@ -28,7 +31,9 @@ export default {
 <style>
     #article-card{
         margin-top:5%;
-        margin-right:2%;
+        margin-right:4%;
+        margin-left:4%;
+        margin-bottom: 5%;
     }
     .article-text{
         line-height: 1.5em;
