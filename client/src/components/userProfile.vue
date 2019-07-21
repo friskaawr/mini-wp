@@ -21,6 +21,7 @@
               <!-- <b-card-text>{{article.content}}</b-card-text> -->
               <!-- <b-card-text class="text-truncate" v-html="article.content">{{article.content}}</b-card-text> -->
               <b-button href="#" variant="primary">See Detail</b-button>
+              <b-button href="#" @click="deleted(article._id)"  variant="primary">Delete</b-button>
             </b-card>
             </div>
           </b-row>
@@ -31,6 +32,11 @@
 </template>
 
 <script>
+import axios from "axios";
+let axioss = axios.create({
+  baseURL: "http://localhost:3000"
+});
+
 export default {
   props: ["userProfile", "userArticle"],
   methods: {
@@ -39,6 +45,43 @@ export default {
 
       //   console.log(this.user);
       this.$emit("statusLogin", "formEdit");
+    },
+    deleted(id){
+      console.log("triggeredddd");
+      console.log(id, "ini idnya");
+    Swal.fire({
+      title: 'Are you sure to delete?',
+      text: "You won't be able to revert this!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    })
+    .then((result) => {
+      if (result.value) {
+        axioss({
+          method : `DELETE`,
+          url : `articles/deleteArticles/${id}`,
+          headers : { token : localStorage.getItem('token')}
+        })
+        .then(({data}) => {
+          Swal.fire(
+            'Deleted!',
+            'Your article has been deleted.',
+            'success'
+          ) 
+        })
+        .catch(err => {
+          Swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            text: err.message || err
+          })
+        })
+      }
+})
+      
     }
   }
 };

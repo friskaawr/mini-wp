@@ -24,7 +24,9 @@ class articleController{
     }
 
     static deleteArticle(req, res, next){
-        let id = req.body.id
+        console.log("triggered controller");
+        
+        let id = req.params.id
         console.log(id);
         Article.deleteOne({_id : id})
         .then(deleted => {
