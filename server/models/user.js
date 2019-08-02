@@ -2,6 +2,19 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const {hashPassword} = require('../helpers/bcrypt')
 
+let uniqueEmail = function(email){
+  return User.findOne({email : email})
+  .then(data => {
+    if(data) return false
+    else return true
+  })
+}
+
+let validateEmail = function(email){
+  var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return re.test(email)
+}
+
 const userSchema = new Schema({
   firstname:  {
       type : String,
@@ -13,7 +26,10 @@ const userSchema = new Schema({
   },
   email:  {
     type : String,
-    required : [true, 'Fill this field']
+    required : [true, 'Fill this field'],
+    validate : [
+      {validator : validateEmail, msg: 'Please fill a valid email address'},
+      {validator : uniqueEmail, msg : 'Please use other email address'}]
   },
   profilepicture : {
     type : String,

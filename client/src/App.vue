@@ -67,8 +67,9 @@ import formProfile from "./components/formProfile";
 import profile from "./components/userProfile";
 import footerz from "./components/footer"
 import axios from "axios";
+
 let axioss = axios.create({
-  baseURL: "http://localhost:3000"
+  baseURL: "http://35.240.213.230"
 });
 
 export default {
@@ -123,6 +124,7 @@ export default {
         data: value
       })
         .then(({ data }) => {
+          console.log("masuk siniiii");
           this.isLogin = true;
           console.log(data);
           this.optionForm = "homepage";
@@ -317,7 +319,8 @@ export default {
 }
 .footer-page{
     bottom: 0;
-    height : 150px;
+    height : 100px;
+    min-height: 100vh;
     width: 100%;
     padding : 6%;
     color : #fff;

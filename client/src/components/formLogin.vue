@@ -49,7 +49,7 @@ export default {
   },
   data() {
     return {
-        params: {
+      params: {
           client_id:"690287163349-rm0i8h5rks0ttbb1rkcfntd47mfu76do.apps.googleusercontent.com"
         },
                 // only needed if you want to render the button with the google ui

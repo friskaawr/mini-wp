@@ -1,5 +1,7 @@
 # mini-wp
 
+linkdeploy = http://pressblog.zahriahfriska.xyz/
+
 ## Getting Started
  * npm install (`client` and `server`)
  * npm install -g parcel-bundler

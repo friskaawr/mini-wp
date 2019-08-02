@@ -31,7 +31,7 @@
 <script>
 import axios from 'axios'
 let axioss = axios.create({
-    baseURL : 'http://localhost:3000',
+    baseURL : 'http://35.240.213.230',
 })
 
 export default {

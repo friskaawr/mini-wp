@@ -14,7 +14,7 @@
           <b-row>
             <h2>My Article</h2>
             <div id="article-card">
-            <b-card v-for="article in userArticle" header-tag="header" footer="Card Footer" footer-tag="footer">
+            <b-card v-for="article in userArticle" :key="article._id" header-tag="header" footer="Card Footer" footer-tag="footer">
               <b-card-title>{{article.title.toUpperCase()}}</b-card-title>
               <small>{{article.createdAt.substring(0, 10)}}</small>
               <small>Author : {{article.UserId.firstname}} {{article.UserId.lastname}}</small>
@@ -34,7 +34,7 @@
 <script>
 import axios from "axios";
 let axioss = axios.create({
-  baseURL: "http://localhost:3000"
+  baseURL: "http://35.240.213.230"
 });
 
 export default {
@@ -71,6 +71,9 @@ export default {
             'Your article has been deleted.',
             'success'
           ) 
+          console.log(data);
+          
+          this.$emit('delete-article', data)
         })
         .catch(err => {
           Swal.fire({
